@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain-openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 import os
 #from streamlit.cli import main
 
