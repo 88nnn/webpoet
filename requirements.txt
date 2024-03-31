@@ -1,4 +1,3 @@
-OPENAI_API_KEY=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
 langchain
 openai
 streamlit
