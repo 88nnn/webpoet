@@ -28,7 +28,7 @@ import streamlit as st
 #from langchain_openai.llms import OpenAI
 
 from langchain_openai.llms import ChatOpenAI
-import os
+
 
 llm = ChatOpenAI
 
