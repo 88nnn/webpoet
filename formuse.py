@@ -9,9 +9,9 @@ def form_use():
 
     st.title("AI 퀴즈")
 
-    for i in range(n):
-        with st.form(langlist[i], clear_on_submit=True):
-            #st.header((i+1)+"번 문제")
+    for a in range(n):
+        with st.form(langlist[a], clear_on_submit=True):
+            st.header((a+1)+"번 문제")
             st.write("문제 출력: ")
             st.subheader("답변 입력: ")
             user_answers = []
@@ -19,7 +19,7 @@ def form_use():
                 user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
                 user_answers.append(user_answer)
 
-            if i == (n-1):
+            if a == (n-1):
                 if submit_button:
                     st.write("수고하셨습니다")
 
