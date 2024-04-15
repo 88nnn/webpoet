@@ -22,8 +22,7 @@ def form_use():
         if a == (n-1):  # 마지막 반복일 때
             if submit_button:
                 st.write("수고하셨습니다")
-            break  # 반복 종료
-            
+                break  # 반복 종료
             else: 
                 if st.button("풀이"):  # "풀이" 버튼이 클릭되면
                     print(asdf)
