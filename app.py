@@ -110,4 +110,9 @@ def main():
 
             # Open a new window to show the quiz result
             new_window = st.button("퀴즈 결과 창에서 확인하기")
-            if new_window
+            if new_window:
+                st.markdown("<script>window.open('https://www.streamlit.io/')</script>", unsafe_allow_html=True)
+
+# 메인 함수 실행
+if __name__ == "__main__":
+    main()
