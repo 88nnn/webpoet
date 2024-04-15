@@ -6,5 +6,5 @@ langchain_community.vectorstores
 openai
 tempfile
 os
-streamlit
+streamlit2
 pytesseract
