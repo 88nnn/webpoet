@@ -4,7 +4,6 @@ import streamlit as st
 def form_use():
     langlist = ["Q1. ", "Q2. ", "Q3. "]
     asdf = ["asdfghjklzxcvbnmqwertyu"]
-    submit_button = st.form_submit_button(label="채점")
     n = 3
 
     st.title("AI 퀴즈")
@@ -19,17 +18,15 @@ def form_use():
                 user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
                 user_answers.append(user_answer)
 
-        if a == (n-1):  # 마지막 반복일 때
+            submit_button = st.form_submit_button(label="다음 문제")
+            if st.button("풀이"):  # "풀이" 버튼이 클릭되면
+                print(asdf)
+                elif submit_button:
+                    elif a == n-1:
+                        return user_answer
             if submit_button:
-                st.write("수고하셨습니다")
-                break  # 반복 종료
-            else: 
-                if st.button("풀이"):  # "풀이" 버튼이 클릭되면
-                    print(asdf)
-                    if st.button("다음 문제"):  # "다음 문제" 버튼을 띄워줌
-                        pass  # 다음 반복문으로 넘어감
-                    elif st.button("다음 문제"):  # "다음 문제" 버튼이 클릭되면
-                        pass  # 다음 반복문으로 넘어감
+                elif a == n-1:
+                        return user_answer
 
 if __name__ == "__main__":
     form_use()
