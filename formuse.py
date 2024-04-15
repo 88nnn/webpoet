@@ -11,7 +11,7 @@ def form_use():
 
     for i in range(n):
         with st.form(langlist[i], clear_on_submit=True):
-            st.header((i+1)+"번 문제")
+            #st.header((i+1)+"번 문제")
             st.write("문제 출력: ")
             st.subheader("답변 입력: ")
             user_answers = []
