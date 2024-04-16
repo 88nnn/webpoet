@@ -6,3 +6,4 @@ tempfile2
 streamlit
 langchain
 pytesseract
+PyPDF2
