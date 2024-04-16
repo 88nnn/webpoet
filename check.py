@@ -96,7 +96,7 @@ def main():
                             user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
                             user_answers.append(user_answer)
                         # Button to grade the quiz
-                        checkbt = st.form_submit_button(label="채점")
+                    checkbt = st.form_submit_button(label="채점")
                         if checkbt:  # Grade the quiz answers
                             quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
                             graded_answers = grade_quiz_answers(user_answers, quiz_answers)
