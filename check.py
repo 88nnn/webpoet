@@ -84,11 +84,6 @@ def main():
             if submit_button:
                 st.markdown('<a href="https://www.google.com" target="_blank">Google</a>', unsafe_allow_html=True)
 
-
-# 메인 함수 실행
-if __name__ == "__main__":
-    main()
-
 # 메인 함수 실행
 if __name__ == "__main__":
     main()
