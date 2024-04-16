@@ -82,7 +82,7 @@ def main():
         if text_content is not None:
             submit_button = st.form_submit_button(label="퀴즈 생성")
             if submit_button:
-                # 동적으로 생성된 폼 시작
+                # 생성된 퀴즈 폼 시작
                 with st.form("생성된 퀴즈", clear_on_submit=True):
                     quiz_questions = generate_quiz(quiz_type, text_content)
                     # Display generated quiz
@@ -104,14 +104,13 @@ def main():
                         graded_answers = grade_quiz_answers(user_answers, quiz_answers)
 
                         # Display grading results
-                        st.header("퀴즈 채점 결과")
-                        for i, (question, user_answer, graded_answer) in enumerate(
+                        with st.form("퀴즈 채점 결과"):
+                            for i, (question, user_answer, graded_answer) in enumerate(
                                 zip(quiz_questions, user_answers, graded_answers), start=1):
                             st.write(f"질문 {i}: {question}")
                             st.write(f"사용자 답변: {user_answer}")
                             st.write(f"채점 결과: {graded_answer}")
 
-                            # Open a new window to show the quiz result
 
 # 메인 함수 실행
 if __name__ == "__main__":
