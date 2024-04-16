@@ -84,8 +84,7 @@ def main():
         if st.button("퀴즈 생성"):
             quiz_questions = generate_quiz(quiz_type, text_content)
             # Display generated quiz
-            with st.form(len(quiz_questions), clear_on_submit=True):
-                st.header("생성된 퀴즈")
+            with st.form("생성된 퀴즈", clear_on_submit=True):
                 for question in quiz_questions:
                     st.write(question)
 
