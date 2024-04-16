@@ -69,46 +69,47 @@ def generate_quiz(quiz_type, text_content):
 
 # 메인 함수
 def main():
-    st.title("AI 퀴즈 생성기")
+    with st.form("AI 퀴즈 생성기", clear_on_submit=True):
+        # 퀴즈 유형 선택
+        quiz_type = st.radio("생성할 퀴즈 유형을 선택하세요:", ["다중 선택 (객관식)", "주관식", "OX 퀴즈"])
 
-    # 퀴즈 유형 선택
-    quiz_type = st.radio("생성할 퀴즈 유형을 선택하세요:", ["다중 선택 (객관식)", "주관식", "OX 퀴즈"])
+        # 파일 업로드 옵션
+        st.header("파일 업로드")
+        uploaded_file = st.file_uploader("텍스트, 이미지, 또는 PDF 파일을 업로드하세요.", type=["txt", "jpg", "jpeg", "png", "pdf"])
 
-    # 파일 업로드 옵션
-    st.header("파일 업로드")
-    uploaded_file = st.file_uploader("텍스트, 이미지, 또는 PDF 파일을 업로드하세요.", type=["txt", "jpg", "jpeg", "png", "pdf"])
+        text_content = process_file(uploaded_file)
 
-    text_content = process_file(uploaded_file)
+        if text_content is not None:
+            submit_button = st.form_submit_button(label="퀴즈 생성")
+            if submit_button:
+                with st.form("생성된 퀴즈", clear_on_submit=True):
+                    quiz_questions = generate_quiz(quiz_type, text_content)
+                    # Display generated quiz
 
-    if text_content is not None:
-        if st.button("퀴즈 생성"):
-            quiz_questions = generate_quiz(quiz_type, text_content)
-            # Display generated quiz
-            with st.form("생성된 퀴즈", clear_on_submit=True):
-                for question in quiz_questions:
-                    st.write(question)
+                    for question in quiz_questions:
+                        st.write(question)
 
-                    # Collect user answers
-                    st.header("답변 입력")
-                    user_answers = []
-                    for i in range(len(quiz_questions)):
-                        user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
-                        user_answers.append(user_answer)
-                    # Button to grade the quiz
-                    submit_button = st.form_submit_button(label="채점")
-                    if submit_button:# Grade the quiz answers
-                        quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
-                        graded_answers = grade_quiz_answers(user_answers, quiz_answers)
+                        # Collect user answers
+                        st.header("답변 입력")
+                        user_answers = []
+                        for i in range(len(quiz_questions)):
+                            user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
+                            user_answers.append(user_answer)
+                        # Button to grade the quiz
+                        checkbt = st.form_submit_button(label="채점")
+                        if checkbt:  # Grade the quiz answers
+                            quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
+                            graded_answers = grade_quiz_answers(user_answers, quiz_answers)
 
-                        # Display grading results
-                        st.header("퀴즈 채점 결과")
-                        for i, (question, user_answer, graded_answer) in enumerate(
-                                zip(quiz_questions, user_answers, graded_answers), start=1):
-                            st.write(f"질문 {i}: {question}")
-                            st.write(f"사용자 답변: {user_answer}")
-                            st.write(f"채점 결과: {graded_answer}")
+                            # Display grading results
+                            st.header("퀴즈 채점 결과")
+                            for i, (question, user_answer, graded_answer) in enumerate(
+                                    zip(quiz_questions, user_answers, graded_answers), start=1):
+                                st.write(f"질문 {i}: {question}")
+                                st.write(f"사용자 답변: {user_answer}")
+                                st.write(f"채점 결과: {graded_answer}")
 
-                            # Open a new window to show the quiz result
+                                # Open a new window to show the quiz result
 
             
 
