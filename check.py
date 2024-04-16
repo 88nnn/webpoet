@@ -96,19 +96,18 @@ def main():
                             user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
                             user_answers.append(user_answer)
                     checkbt = st.form_submit_button(label="채점")
-                        if checkbt:  # Grade the quiz answers
-                            quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
-                            graded_answers = grade_quiz_answers(user_answers, quiz_answers)
+                    if checkbt:  # Grade the quiz answers
+                        quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
+                        graded_answers = grade_quiz_answers(user_answers, quiz_answers)
 
-                            # Display grading results
-                            st.header("퀴즈 채점 결과")
-                            for i, (question, user_answer, graded_answer) in enumerate(
-                                    zip(quiz_questions, user_answers, graded_answers), start=1):
-                                st.write(f"질문 {i}: {question}")
-                                st.write(f"사용자 답변: {user_answer}")
-                                st.write(f"채점 결과: {graded_answer}")
+                        # Display grading results
+                        st.header("퀴즈 채점 결과")
+                        for i, (question, user_answer, graded_answer) in enumerate(
+                                zip(quiz_questions, user_answers, graded_answers), start=1):
+                            st.write(f"질문 {i}: {question}")
+                            st.write(f"사용자 답변: {user_answer}")
+                            st.write(f"채점 결과: {graded_answer}")
 
-                                # Open a new window to show the quiz result
 
             
 
