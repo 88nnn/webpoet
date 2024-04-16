@@ -80,10 +80,14 @@ def main():
         text_content = process_file(uploaded_file)
 
         if text_content is not None:
-            submit_button = st.form_submit_button(label="퀴즈 생성")
+            submit_button = st.form_submit_button(label="퀴즈 생성")  # 제출 버튼 추가
             if submit_button:
                 st.markdown('<a href="https://www.google.com" target="_blank">Google</a>', unsafe_allow_html=True)
 
+
+# 메인 함수 실행
+if __name__ == "__main__":
+    main()
 
 # 메인 함수 실행
 if __name__ == "__main__":
