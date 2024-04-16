@@ -82,34 +82,7 @@ def main():
         if text_content is not None:
             submit_button = st.form_submit_button(label="퀴즈 생성")
             if submit_button:
-                # 생성된 퀴즈 폼 시작
-                with st.form("생성된 퀴즈", clear_on_submit=True):
-                    quiz_questions = generate_quiz(quiz_type, text_content)
-                    # Display generated quiz
-
-                    for question in quiz_questions:
-                        st.write(question)
-
-                        # Collect user answers
-                        st.header("답변 입력")
-                        user_answers = []
-                        for i in range(len(quiz_questions)):
-                            user_answer = st.text_input(f"질문 {i + 1}에 대한 답변 입력", "")
-                            user_answers.append(user_answer)
-                    
-                    # 제출 버튼 추가
-                    checkbt = st.form_submit_button(label="채점")
-                    if checkbt:  # Grade the quiz answers
-                        quiz_answers = [answer.split(": ")[1] for answer in quiz_questions]
-                        graded_answers = grade_quiz_answers(user_answers, quiz_answers)
-
-                        # Display grading results
-                        with st.form("퀴즈 채점 결과"):
-                            for i, (question, user_answer, graded_answer) in enumerate(
-                                zip(quiz_questions, user_answers, graded_answers), start=1):
-                            st.write(f"질문 {i}: {question}")
-                            st.write(f"사용자 답변: {user_answer}")
-                            st.write(f"채점 결과: {graded_answer}")
+                st.markdown('<a href="https://www.google.com" target="_blank">Google</a>', unsafe_allow_html=True)
 
 
 # 메인 함수 실행
